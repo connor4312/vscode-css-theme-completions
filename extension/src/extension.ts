@@ -109,7 +109,13 @@ export function activate(context: vscode.ExtensionContext): void {
    * Completion provider for colors.
    */
   const provider = vscode.languages.registerCompletionItemProvider(
-    [{ language: 'css' }, { language: 'less' }, { language: 'scss' }, { language: 'stylus' }],
+    [
+      { language: 'css' },
+      { language: 'less' },
+      { language: 'scss' },
+      { language: 'stylus' },
+      { language: 'sass' },
+    ],
     {
       async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
         const line = document.lineAt(position).text;

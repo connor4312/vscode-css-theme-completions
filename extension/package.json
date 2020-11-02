@@ -14,6 +14,7 @@
     "onLanguage:css",
     "onLanguage:less",
     "onLanguage:scss",
+    "onLanguage:sass",
     "onLanguage:stylus"
   ],
   "repository": {
