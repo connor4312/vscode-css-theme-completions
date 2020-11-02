@@ -2,7 +2,7 @@
   "name": "css-theme-completions",
   "displayName": "VS Code CSS Theme Completions",
   "description": "Completions for VS Code css colors (in webviews)",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "connor4312",
   "engines": {
     "vscode": "^1.50.0"
