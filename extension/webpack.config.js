@@ -12,7 +12,7 @@ const config = (target) => ({
   },
   externals:
     target === 'web'
-      ? { vscode: 'commonjs vscode', 'node-fetch': 'fetch' }
+      ? { vscode: 'commonjs vscode', 'node-fetch': 'root fetch' }
       : { vscode: 'commonjs vscode' },
   resolve: {
     extensions: ['.ts', '.js'],
