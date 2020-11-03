@@ -1,7 +1,7 @@
 const path = require('path');
 
 const config = (target) => ({
-  target: 'node',
+  target,
   entry: './src/extension.ts',
   devtool: 'source-map',
   output: {

@@ -15,7 +15,8 @@
     "onLanguage:less",
     "onLanguage:scss",
     "onLanguage:sass",
-    "onLanguage:stylus"
+    "onLanguage:stylus",
+    "onLanguage:html"
   ],
   "repository": {
     "type": "git",

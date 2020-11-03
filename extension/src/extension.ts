@@ -10,6 +10,7 @@ const enum Constants {
   LastUpdatedKey = 'lastUpdated',
 
   VarPrefix = 'var(',
+  ThemeVarPrefix = '--vscode-',
 
   SettingSection = 'cssThemeCompletions',
   UrlSetting = 'dataUrl',
@@ -19,7 +20,7 @@ const enum Constants {
 }
 
 const msPerDay = 1000 * 60 * 60 * 24;
-const shouldDisplayRe = /^\s*-?-?v?s?c?o?d?e?-?/;
+const cssVarRe = /^\s*--([a-z0-9_-]*)/i;
 
 interface IColorData {
   key: string;
@@ -115,6 +116,7 @@ export function activate(context: vscode.ExtensionContext): void {
       { language: 'scss' },
       { language: 'stylus' },
       { language: 'sass' },
+      { language: 'html' },
     ],
     {
       async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
@@ -126,8 +128,8 @@ export function activate(context: vscode.ExtensionContext): void {
           return;
         }
 
-        const varStart = varExprStart + Constants.VarPrefix.length;
-        if (!shouldDisplayRe.test(line.slice(varStart))) {
+        const varMatch = cssVarRe.exec(line.slice(varExprStart + Constants.VarPrefix.length));
+        if (!varMatch) {
           return;
         }
 
@@ -137,13 +139,19 @@ export function activate(context: vscode.ExtensionContext): void {
         }
 
         const currentTheme = vscode.window.activeColorTheme.kind;
+        const varStart = new vscode.Position(
+          position.line,
+          varExprStart + Constants.VarPrefix.length,
+        );
+        const varEnd = varStart.translate(0, varMatch[0].length);
 
         return colors.map((c) => {
           const color = resolveColor(c, currentTheme);
           const item = new vscode.CompletionItem(
-            `--vscode-${c.key}`,
+            Constants.ThemeVarPrefix + c.key,
             vscode.CompletionItemKind.Color,
           );
+          item.range = new vscode.Range(varStart, varEnd);
           if (color) {
             item.documentation = color;
           }
@@ -156,7 +164,7 @@ export function activate(context: vscode.ExtensionContext): void {
         });
       },
     },
-    'var(',
+    'var(--vs',
   );
 
   context.subscriptions.push(provider);
