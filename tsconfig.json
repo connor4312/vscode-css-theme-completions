@@ -3,7 +3,7 @@
     "module": "ESNext",
     "target": "ES2019",
     "outDir": "out",
-    "lib": ["ES2019"],
+    "lib": ["ES2019", "WebWorker"],
     "sourceMap": true,
     "rootDir": "src",
 		"strict": true,

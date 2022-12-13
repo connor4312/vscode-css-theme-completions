@@ -13,8 +13,6 @@
       "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
       "trace": true,
       "outFiles": ["${workspaceFolder}/out/**/*.js"]
-      // todo: https://github.com/eamodio/vscode-tsl-problem-matcher/issues/4
-      // "preLaunchTask": "npm: watch"
     }
   ]
 }

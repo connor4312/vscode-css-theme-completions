@@ -1,0 +1,44 @@
+{
+  "name": "css-theme-completions",
+  "displayName": "VS Code CSS Theme Completions",
+  "description": "Completions for VS Code css colors (in webviews)",
+  "version": "0.0.4",
+  "publisher": "connor4312",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:css",
+    "onLanguage:less",
+    "onLanguage:scss",
+    "onLanguage:sass",
+    "onLanguage:stylus",
+    "onLanguage:html"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/connor4312/vscode-css-theme-completions.git"
+  },
+  "main": "./out/main.js",
+  "browser": "./out/main.js",
+  "scripts": {
+    "test": "tsc --noEmit",
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=neutral",
+    "watch": "npm run esbuild-base -- --sourcemap --watch"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "typescript": "^4.9.4",
+    "esbuild": "^0.16.5"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 100,
+    "tabWidth": 2
+  }
+}
