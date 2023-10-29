@@ -57,6 +57,7 @@ export function activate(context: vscode.ExtensionContext): void {
       { language: 'stylus' },
       { language: 'sass' },
       { language: 'html' },
+      { language: 'svelte' },
     ],
     {
       async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
